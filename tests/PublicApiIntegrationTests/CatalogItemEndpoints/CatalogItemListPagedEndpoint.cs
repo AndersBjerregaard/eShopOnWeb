@@ -21,7 +21,6 @@ namespace PublicApiIntegrationTests.CatalogItemEndpoints
             response.EnsureSuccessStatusCode();
             var stringResponse = await response.Content.ReadAsStringAsync();
             var model = stringResponse.FromJson<CatalogIndexViewModel>();
-
             Assert.AreEqual(10, model.CatalogItems.Count());
         }
 
@@ -45,7 +44,6 @@ namespace PublicApiIntegrationTests.CatalogItemEndpoints
             var model2 = stringResponse2.FromJson<ListPagedCatalogItemResponse>();
 
             var totalExpected = totalItem - (pageSize * pageIndex);
-
             Assert.AreEqual(totalExpected, model2.CatalogItems.Count());
         }
 
@@ -66,7 +64,6 @@ namespace PublicApiIntegrationTests.CatalogItemEndpoints
             }
             await Task.WhenAll(tasks.ToList());
             var totalKO = tasks.Count(t => t.Result.StatusCode != HttpStatusCode.OK);
-
             Assert.AreEqual(0, totalKO);
         }
     }

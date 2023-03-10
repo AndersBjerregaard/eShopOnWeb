@@ -1,21 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>		
-		<RootNamespace>Microsoft.eShopWeb.Infrastructure</RootNamespace>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Microsoft.eShopWeb.Infrastructure</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>501df175-0aa1-4ce7-9b2b-fdb20e74dd50</UserSecretsId>
+  </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Ardalis.Specification.EntityFrameworkCore" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\ApplicationCore\ApplicationCore.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<Folder Include="Data\Migrations\" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationCore\ApplicationCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+  </ItemGroup>
+
 </Project>

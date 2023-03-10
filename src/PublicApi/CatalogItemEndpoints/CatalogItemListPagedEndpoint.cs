@@ -29,9 +29,9 @@ public class CatalogItemListPagedEndpoint : IEndpoint<IResult, ListPagedCatalogI
     public void AddRoute(IEndpointRouteBuilder app)
     {
         app.MapGet("api/catalog-items",
-            async (int? pageSize, int? pageIndex, int? catalogBrandId, int? catalogTypeId, IRepository<CatalogItem> itemRepository) =>
+            async (int? pageSize, int? pageIndex, int? catalogBrandId, int? catalogTypeId, CatalogItemSorting? sort, IRepository<CatalogItem> itemRepository) =>
             {
-                return await HandleAsync(new ListPagedCatalogItemRequest(pageSize, pageIndex, catalogBrandId, catalogTypeId), itemRepository);
+                return await HandleAsync(new ListPagedCatalogItemRequest(pageSize, pageIndex, catalogBrandId, catalogTypeId, sort), itemRepository);
             })
             .Produces<ListPagedCatalogItemResponse>()
             .WithTags("CatalogItemEndpoints");
@@ -49,7 +49,8 @@ public class CatalogItemListPagedEndpoint : IEndpoint<IResult, ListPagedCatalogI
             skip: request.PageIndex.Value * request.PageSize.Value,
             take: request.PageSize.Value,
             brandId: request.CatalogBrandId,
-            typeId: request.CatalogTypeId);
+            typeId: request.CatalogTypeId,
+            sort: request.Sorting.Value);
 
         var items = await itemRepository.ListAsync(pagedSpec);
 
